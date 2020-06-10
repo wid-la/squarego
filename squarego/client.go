@@ -11,6 +11,8 @@ import (
 type Service interface {
 	GetCustomerByID(customerID string) (Customer, error)
 	UpdateCustomerByID(customerID string, object Customer) (Customer, error)
+
+	GetOrderByID(locationID, orderID string) (Order, error)
 }
 
 // NewService ...
