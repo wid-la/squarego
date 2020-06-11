@@ -13,9 +13,9 @@ type Event struct {
 
 // EventData ...
 type EventData struct {
-	ID     *string                `json:"id"`
-	Type   *string                `json:"type"`
-	Object map[string]interface{} `json:"object"`
+	ID     *string            `json:"id"`
+	Type   *string            `json:"type"`
+	Object map[string]Payment `json:"object"`
 }
 
 // ConvertDateTime ...
