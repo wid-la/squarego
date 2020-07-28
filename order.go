@@ -22,6 +22,7 @@ type Order struct {
 	ID          *string       `json:"id"`
 	LocationID  *string       `json:"location_id"`
 	ReferenceID *string       `json:"reference_id"`
+	CustomerID  *string       `json:"customer_id"`
 	Items       []Item        `json:"line_items"`
 	TotalMoney  PaymentAmount `json:"total_money"`
 }

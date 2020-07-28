@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"time"
 )
 
 // Service ...
@@ -13,6 +14,8 @@ type Service interface {
 	UpdateCustomerByID(customerID string, object Customer) (Customer, error)
 
 	GetOrderByID(locationID, orderID string) (Order, error)
+
+	GetRecentPayments(time.Time) ([]Payment, error)
 }
 
 // NewService ...

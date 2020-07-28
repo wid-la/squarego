@@ -1,5 +1,13 @@
 package squarego
 
+import (
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"net/http"
+	"time"
+)
+
 // Payment ...
 type Payment struct {
 	ID            *string       `json:"id"`
@@ -18,6 +26,11 @@ type Payment struct {
 	AmountMoney   PaymentAmount `json:"amount_money"`
 	TotalMoney    PaymentAmount `json:"total_money"`
 	CardDetails   CardDetail    `json:"card_details"`
+}
+
+// PaymentResponse ...
+type PaymentResponse struct {
+	Payments []Payment `json:"payments"`
 }
 
 // PaymentAmount ...
@@ -46,4 +59,24 @@ type Card struct {
 	ExpYear     *int    `json:"exp_year"`
 	Fingerprint *string `json:"fingerprint"`
 	LastFour    *string `json:"last_4"`
+}
+
+// GetRecentPayments ...
+func (svc *service) GetRecentPayments(startDate time.Time) ([]Payment, error) {
+	var paymentResp PaymentResponse
+
+	paymentURL := fmt.Sprintf("payments?begin_time=%s&sort_order=ASC", startDate.Format(time.RFC3339))
+	resp, err := svc.createRequest(http.MethodGet, paymentURL, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	b, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+
+	err = json.Unmarshal(b, &paymentResp)
+
+	return paymentResp.Payments, nil
 }
