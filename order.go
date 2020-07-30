@@ -25,6 +25,7 @@ type Order struct {
 	CustomerID  *string       `json:"customer_id"`
 	Items       []Item        `json:"line_items"`
 	TotalMoney  PaymentAmount `json:"total_money"`
+	Tenders     []Tender      `json:"tenders"`
 }
 
 // GetOrderByID ...
