@@ -10,22 +10,23 @@ import (
 
 // Payment ...
 type Payment struct {
-	ID            *string       `json:"id"`
-	CreatedAt     *string       `json:"created_at"`
-	UpdatedAt     *string       `json:"updated_at"`
-	Status        *string       `json:"status"`
-	SourceType    *string       `json:"source_type"`
-	LocationID    *string       `json:"location_id"`
-	OrderID       *string       `json:"order_id"`
-	ReceiptNumber *string       `json:"receipt_number"`
-	ReceiptURL    *string       `json:"receipt_url"`
-	ReferenceID   *string       `json:"reference_id"`
-	Note          *string       `json:"note"`
-	CustomerID    *string       `json:"customer_id"`
-	Version       *int          `json:"version"`
-	AmountMoney   PaymentAmount `json:"amount_money"`
-	TotalMoney    PaymentAmount `json:"total_money"`
-	CardDetails   CardDetail    `json:"card_details"`
+	ID                *string       `json:"id"`
+	CreatedAt         *string       `json:"created_at"`
+	UpdatedAt         *string       `json:"updated_at"`
+	Status            *string       `json:"status"`
+	SourceType        *string       `json:"source_type"`
+	LocationID        *string       `json:"location_id"`
+	OrderID           *string       `json:"order_id"`
+	ReceiptNumber     *string       `json:"receipt_number"`
+	ReceiptURL        *string       `json:"receipt_url"`
+	ReferenceID       *string       `json:"reference_id"`
+	Note              *string       `json:"note"`
+	CustomerID        *string       `json:"customer_id"`
+	BuyerEmailAddress *string       `json:"buyer_email_address"`
+	Version           *int          `json:"version"`
+	AmountMoney       PaymentAmount `json:"amount_money"`
+	TotalMoney        PaymentAmount `json:"total_money"`
+	CardDetails       CardDetail    `json:"card_details"`
 }
 
 // PaymentResponse ...
